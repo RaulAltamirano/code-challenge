@@ -1,29 +1,54 @@
+import { ListNode } from "./mergeTwoLists";
 
+function createLinkedList(arr: number[]): ListNode | null {
+    if (arr.length === 0) return null;
 
-class ListNode {
-    val: number;
-    next: ListNode | null;
-    constructor(val?: number, next?: ListNode | null) {
-        this.val = (val === undefined ? 0 : val);
-        this.next = (next === undefined ? null : next);
+    let head = new ListNode(arr[0]);
+    let current = head;
+
+    for (let i = 1; i < arr.length; i++) {
+        current.next = new ListNode(arr[i]);
+        current = current.next;
     }
+
+    return head;
 }
-
-// Ejemplo de uso
-const node1 = new ListNode(1); 
-const node2 = new ListNode(2); 
-const node3 = new ListNode(3); 
-
-// Enlazar los nodos
-node1.next = node2;
-node2.next = node3;
 
 
 function deleteDuplicates(head: ListNode | null): ListNode | null {
-    if (!head.next) return null
-    console.log(head);
+    if (!head) return null;
 
-};
+    const resSet = new Set<number>();
+    const ar: number[] = [];
+    let current: ListNode | null = head;
 
 
-deleteDuplicates(node1)
+    while (current !== null) {
+        const val = current.val;
+        if (!resSet.has(val)) {
+            resSet.add(val);
+            ar.push(val);
+        }
+        current = current.next;
+    }
+    let newHead: ListNode | null = null;
+    let tail: ListNode | null = null;
+
+    for (const val of ar) {
+        const newNode = new ListNode(val);
+        if (!newHead) {
+            newHead = newNode;
+            tail = newNode;
+        } else {
+            tail!.next = newNode;
+            tail = newNode;
+        }
+    }
+    console.log(newHead);
+    return newHead;
+}
+
+
+
+const head = createLinkedList([1, 1, 2, 3, 3]);
+deleteDuplicates(head)
