@@ -22,29 +22,13 @@ node22.right = node24;
 
 
 function isSameTree(p: TreeNode | null, q: TreeNode | null): boolean {
-    if (!p && !q) return true
-    if (!p || !q) return false
+    if (!p && !q) return true;
+    if (!p || !q) return false;
 
-    const sideB = []
-    const sideQ = []
-    console.log(p, q);
-    let headP = p
-    while (headP.val) {
-        console.log(p)
-        if (p.left) {
-            sideB.push(headP.left) || null
-            headP.val = headP.left.val
-        }
+    if (p.val !== q.val) return false;
 
-        if (p.right){
-
-            sideQ.push(headP.right) || null
-            headP.val = headP.right.val
-        } 
-    }
-    console.log(sideB)
-    return false
-};
+    return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+}
 
 
 isSameTree(node20, node21)
