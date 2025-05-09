@@ -12,9 +12,7 @@ A collection of my solutions to programming challenges from CodeWars, HackerRank
 
 ```
 ├── src/
-│   ├── codewars/
-│   ├── hackerrank/
-│   └── leetcode/
+│   ├── code/
 ├── package.json
 ├── tsconfig.json
 └── jest.config.js
