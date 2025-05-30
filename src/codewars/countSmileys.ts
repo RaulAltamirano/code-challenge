@@ -16,7 +16,6 @@ export function countSmileys(arr: string[]): number {
         
         count++;
     }
-    console.log(count);
     return count;
 }
 
